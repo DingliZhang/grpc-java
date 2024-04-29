@@ -20,6 +20,7 @@ subprojects {
     version = "1.26.0" // CURRENT_GRPC_VERSION
 
     repositories {
+        maven { url 'file://@HOME@/.m2/repository'}
         maven { // The google mirror is less flaky than mavenCentral()
             url "https://maven-central.storage-download.googleapis.com/repos/central/data/" }
         mavenCentral()

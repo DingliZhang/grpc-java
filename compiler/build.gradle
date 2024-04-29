@@ -55,6 +55,7 @@ model {
                 cppCompiler.executable = 'aarch64-linux-gnu-g++'
                 linker.executable = 'aarch64-linux-gnu-g++'
             }
+            target("riscv64")
             target("s390_64")
         }
         clang(Clang) {
@@ -66,6 +67,7 @@ model {
         x86_64 { architecture "x86_64" }
         ppcle_64 { architecture "ppcle_64" }
         aarch_64 { architecture "aarch_64" }
+        riscv64 { architecture "riscv64" }
         s390_64 { architecture "s390_64" }
     }
 
@@ -76,6 +78,7 @@ model {
                 'x86_64',
                 'ppcle_64',
                 'aarch_64',
+                'riscv64',
                 's390_64'
             ]) {
                 // If arch is not within the defined platforms, we do not specify the
