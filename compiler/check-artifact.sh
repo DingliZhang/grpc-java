@@ -61,6 +61,8 @@ checkArch ()
         assertEq "$format" "elf64-x86-64" $LINENO
       elif [[ "$ARCH" == aarch_64 ]]; then
         assertEq "$format" "elf64-little" $LINENO
+      elif [[ "$ARCH" == riscv_64 ]]; then
+        assertEq "$format" "elf64-little" $LINENO
       else
         fail "Unsupported arch: $ARCH"
       fi
@@ -108,6 +110,9 @@ checkDependencies ()
     elif [[ "$ARCH" == aarch_64 ]]; then
       dump_cmd='aarch64-linux-gnu-objdump -x '"$1"' |grep "NEEDED"'
       white_list="linux-vdso\.so\.1\|libpthread\.so\.0\|libm\.so\.6\|libc\.so\.6\|ld-linux-aarch64\.so\.1"
+    elif [[ "$ARCH" == riscv_64 ]]; then
+      dump_cmd='riscv64-linux-gnu-objdump -x '"$1"' |grep "NEEDED"'
+      white_list="linux-vdso\.so\.1\|libpthread\.so\.0\|libm\.so\.6\|libc\.so\.6\|ld-linux-riscv64-lp64d\.so\.1"
     fi
   elif [[ "$OS" == osx ]]; then
     dump_cmd='otool -L '"$1"' | fgrep dylib'
