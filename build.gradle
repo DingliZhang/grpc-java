@@ -23,6 +23,8 @@ subprojects {
     version = "1.56.0" // CURRENT_GRPC_VERSION
 
     repositories {
+        maven { url 'file://@HOME@/.m2/repository'}
+        maven { url "https://mirrors.huaweicloud.com/repository/maven/"}
         maven { // The google mirror is less flaky than mavenCentral()
             url "https://maven-central.storage-download.googleapis.com/maven2/" }
         mavenCentral()
